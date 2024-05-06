@@ -1,5 +1,8 @@
 # Ex. No:1b 			Study of Client Server Chat Applications
 
+
+## NAME: ZAFREEN J
+## REGISTER NO: 212223040252
 ## Aim: 
 To perform a study on Client Server Chat Applications
 ## Introduction:
@@ -76,43 +79,69 @@ Client-server chat applications are foundational to real-time communication over
 ## Program:
 client
 ```
-import socket
-s=socket.socket()
-s.bind(('localhost',8000))
-s.listen(5)
-c,addr=s.accept()
-size=int(input("Enter number of frames to send : "))
-l=list(range(size))
-s=int(input("Enter Window Size : "))
-st=0
-i=0
-while True:
-     while(i<len(l)):
-          st+=s
-          c.send(str(l[i:st]).encode())
-          ack=c.recv(1024).decode()
-          if ack:
-              print(ack)
-              i+=s
+
+   import socket
+   
+   s=socket.socket()
+   
+   s.bind(('localhost',8000))
+   
+   s.listen(5)
+   
+   c,addr=s.accept()
+   
+   while True:
+   
+      i=input("Enter a data: ")
+      
+      c.send(i.encode())
+      
+      ack=c.recv(1024).decode()
+      
+      if ack:
+      
+           print(ack)
+           
+           continue
+           
+      else:
+      
+           c.close()
+           
+           break
+
+
+
 ```
+
+
 Server
 ```
-import socket
-s=socket.socket()
-s.connect(('localhost',8000))
-while True:
-     print(s.recv(1024).decode())
-     s.send("acknowledgement recived from the server".encode())
+     import socket
+     
+     s=socket.socket()
+     
+     s.connect(('localhost',8000))
+     
+     while True:
+     
+           print(s.recv(1024).decode())
+           
+           s.send("Acknowledgement Recived".encode())
+
+
 ```
 ## OUTPUT:
 client
 
-![Screenshot 2024-04-15 182829](https://github.com/ZafreenJagir/ChatStudy/assets/144870573/653e3f15-cf13-4ac2-908c-26bc6f7508b2)
+
+![Screenshot 2024-05-06 085301](https://github.com/ZafreenJagir/ChatStudy/assets/144870573/aae242ab-15cb-448b-aad4-81b3ce51ff62)
 
 
 server
 
-![Screenshot 2024-04-15 182909](https://github.com/ZafreenJagir/ChatStudy/assets/144870573/5e2a671f-edf6-4453-8bad-e3ed0c4a64bd)
+![Screenshot 2024-05-06 085310](https://github.com/ZafreenJagir/ChatStudy/assets/144870573/bdc174f3-7e89-4498-93e7-2e2a785f1809)
+
 
 
 ## Result:
